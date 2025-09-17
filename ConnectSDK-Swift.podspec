@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   such as FireTV, Google Cast, and more.
   DESC
 
-  s.homepage         = 'https://github.com/yourusername/ConnectSDK-Swift'
+  s.homepage         = 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift'
   s.license          = { :type => 'Apache-2.0', :file => 'LICENSE' }
   s.author           = { 'Farhan Maqsood' => 'farhanmaqsood44@gmail.com' }
   s.source           = { :git => 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift.git', :tag => s.version.to_s }
@@ -15,8 +15,14 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '12.0'
   s.swift_version    = '5.0'
 
-  # Include everything (core + modules + default platforms header)
-  s.source_files = 'core/**/*.{h,m,swift}', 'modules/**/*.{h,m,swift}', 'ConnectSDKDefaultPlatforms.h'
-  s.public_header_files = 'core/**/*.h', 'modules/**/*.h', 'ConnectSDKDefaultPlatforms.h'
+  # Important: force module name to "ConnectSDK"
+  s.module_name      = 'ConnectSDK'
+
+  # Include all sources
+  s.source_files = 'ConnectSDK-Swift/**/*.{h,m,swift}'
+  s.public_header_files = 'ConnectSDK-Swift/**/*.h'
+
+  # Depend on the Core pod
+  s.dependency 'ConnectSDK-Swift-Core', '~> 1.0.2'
 end
 
