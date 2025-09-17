@@ -13,30 +13,28 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = "11.0"
 
-  # Core source files (your own implementation)
-  s.source_files = "core/**/*.{h,m}",
-                   "modules/**/*.{h,m}",
-                   "ConnectSDKDefaultPlatforms.h"
+  # ---------------- Core Subspec ----------------
+  s.subspec 'Core' do |core|
+    core.source_files = "core/**/*.{h,m}",
+                        "modules/**/*.{h,m}",
+                        "ConnectSDKDefaultPlatforms.h"
+    core.private_header_files = "**/*_Private.h"
 
-  s.private_header_files = "**/*_Private.h"
+    core.vendored_frameworks = [
+      "Frameworks/LGCast/LGCast.xcframework",
+      "Frameworks/LGCast/GStreamerForLGCast.xcframework"
+    ]
 
-  # Precompiled LGCast and GStreamer frameworks
-  s.vendored_frameworks = [
-    "Frameworks/LGCast/LGCast.xcframework",
-    "Frameworks/LGCast/GStreamerForLGCast.xcframework"
-  ]
+    core.libraries  = "z", "icucore"
+    core.frameworks = "SystemConfiguration", "CoreBluetooth"
 
-  # System libraries/frameworks
-  s.libraries  = "z", "icucore"
-  s.frameworks = "SystemConfiguration", "CoreBluetooth"
+    core.prefix_header_contents = <<-PREFIX
+      #define CONNECT_SDK_VERSION @"#{s.version}"
+      #define CONNECT_SDK_ENABLE_LOG
+    PREFIX
+  end
 
-  # Prefix header macros
-  s.prefix_header_contents = <<-PREFIX
-    #define CONNECT_SDK_VERSION @"#{s.version}"
-    #define CONNECT_SDK_ENABLE_LOG
-  PREFIX
-
-  # Example subspec (GoogleCast)
+  # ---------------- GoogleCast Subspec ----------------
   s.subspec 'GoogleCast' do |sp|
     sp.dependency 'ConnectSDK-Swift/Core'
     sp.source_files = "modules/google-cast/**/*.{h,m}"
