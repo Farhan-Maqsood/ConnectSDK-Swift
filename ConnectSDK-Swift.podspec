@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
 
   s.homepage         = 'https://github.com/yourusername/ConnectSDK-Swift'
   s.license          = { :type => 'Apache-2.0', :file => 'LICENSE' }
-  s.author           = { 'Your Name' => 'you@example.com' }
-  s.source           = { :git => 'https://github.com/yourusername/ConnectSDK-Swift.git', :tag => s.version.to_s }
+  s.author           = { 'Farhan Maqsood' => 'farhanmaqsood44@gmail.com' }
+  s.source           = { :git => 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '12.0'
   s.swift_version    = '5.0'
