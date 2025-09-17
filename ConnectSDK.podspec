@@ -24,23 +24,18 @@ Pod::Spec.new do |s|
     "OTHER_LDFLAGS"  => "$(inherited) -ObjC"
   }
 
-  # Source files
+  # Core sources
   s.source_files = "core/**/*.{h,m}",
                    "modules/**/*.{h,m}",
                    "ConnectSDKDefaultPlatforms.h",
                    "ConnectSDK.h"
 
-  # Private headers
   s.private_header_files = "**/*_Private.h"
-
-  # Module map
   s.module_map = "modules/module.modulemap"
 
-  # System libraries/frameworks
   s.libraries = "z", "icucore"
   s.frameworks = "SystemConfiguration", "CoreBluetooth"
 
-  # Prefix header macros
   s.prefix_header_contents = <<-PREFIX
     #define CONNECT_SDK_VERSION @"#{s.version}"
     #define CONNECT_SDK_ENABLE_LOG
@@ -59,6 +54,28 @@ Pod::Spec.new do |s|
         #   define DLog(...)
     #endif
   PREFIX
+
+  # ====== Fix for LGCast duplicate headers ======
+
+  # Tell CocoaPods about the prebuilt frameworks
+  s.vendored_frameworks = [
+    "Frameworks/LGCast/LGCast.xcframework",
+    "Frameworks/LGCast/GStreamerForLGCast.xcframework"
+  ]
+
+  # Exclude ALL headers inside .xcframework slices (avoid duplicates)
+  s.exclude_files = [
+    "Frameworks/LGCast/LGCast.xcframework/**/Headers/*",
+    "Frameworks/LGCast/GStreamerForLGCast.xcframework/**/Headers/*"
+  ]
+
+  # Explicitly expose ONLY one set of headers (from ios-arm64 slice)
+  s.public_header_files = [
+    "Frameworks/LGCast/LGCast.xcframework/ios-arm64/LGCast.framework/Headers/*.h",
+    "Frameworks/LGCast/GStreamerForLGCast.xcframework/ios-arm64/GStreamerForLGCast.framework/Headers/*.h"
+  ]
+
+  # ==============================================
 
   # Core subspec
   s.subspec 'Core' do |sp|
@@ -82,3 +99,4 @@ Pod::Spec.new do |s|
     }
   end
 end
+
