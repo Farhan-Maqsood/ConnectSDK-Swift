@@ -1,44 +1,22 @@
 Pod::Spec.new do |s|
-  s.name         = "ConnectSDK-Swift"
-  s.version      = "1.0.1"
-  s.summary      = "ConnectSDK Swift SDK"
-  s.description  = <<-DESC
-    ConnectSDK Swift module for device discovery and communication.
-    Handles high-level services and framework integration.
+  s.name             = 'ConnectSDK-Swift'
+  s.version          = '1.0.1'
+  s.summary          = 'Connect SDK Swift version'
+  s.description      = <<-DESC
+  ConnectSDK-Swift enables discovery and connection to multiple devices 
+  such as FireTV, Google Cast, and more.
   DESC
-  s.homepage     = "https://github.com/Farhan-Maqsood/ConnectSDK-Swift"
-  s.license      = { :type => "Apache-2.0", :file => "LICENSE" }
-  s.author       = { "Farhan Maqsood" => "farhanmaqsood44@gmail.com" }
-  s.source       = { :git => "https://github.com/Farhan-Maqsood/ConnectSDK-Swift.git", :tag => s.version }
 
-  s.ios.deployment_target = "11.0"
+  s.homepage         = 'https://github.com/yourusername/ConnectSDK-Swift'
+  s.license          = { :type => 'Apache-2.0', :file => 'LICENSE' }
+  s.author           = { 'Your Name' => 'you@example.com' }
+  s.source           = { :git => 'https://github.com/yourusername/ConnectSDK-Swift.git', :tag => s.version.to_s }
 
-  # ---------------- Core Subspec ----------------
-  s.subspec 'Core' do |core|
-    core.source_files = "core/**/*.{h,m}",
-                        "modules/**/*.{h,m}",
-                        "ConnectSDKDefaultPlatforms.h"
-    core.private_header_files = "**/*_Private.h"
+  s.ios.deployment_target = '12.0'
+  s.swift_version    = '5.0'
 
-    core.vendored_frameworks = [
-      "Frameworks/LGCast/LGCast.xcframework",
-      "Frameworks/LGCast/GStreamerForLGCast.xcframework"
-    ]
-
-    core.libraries  = "z", "icucore"
-    core.frameworks = "SystemConfiguration", "CoreBluetooth"
-
-    core.prefix_header_contents = <<-PREFIX
-      #define CONNECT_SDK_VERSION @"#{s.version}"
-      #define CONNECT_SDK_ENABLE_LOG
-    PREFIX
-  end
-
-  # ---------------- GoogleCast Subspec ----------------
-  s.subspec 'GoogleCast' do |sp|
-    sp.dependency 'ConnectSDK-Swift/Core'
-    sp.source_files = "modules/google-cast/**/*.{h,m}"
-    sp.private_header_files = "modules/google-cast/**/*_Private.h"
-  end
+  # Include everything (core + modules + default platforms header)
+  s.source_files = 'core/**/*.{h,m,swift}', 'modules/**/*.{h,m,swift}', 'ConnectSDKDefaultPlatforms.h'
+  s.public_header_files = 'core/**/*.h', 'modules/**/*.h', 'ConnectSDKDefaultPlatforms.h'
 end
 
