@@ -4,8 +4,7 @@ Pod::Spec.new do |s|
   s.summary      = "ConnectSDK Swift SDK"
   s.description  = <<-DESC
     ConnectSDK Swift module for device discovery and communication.
-
-    Handles high-level services, framework integration, and GoogleCast support.
+    Handles high-level services and framework integration.
   DESC
 
   s.homepage     = "https://github.com/Farhan-Maqsood/ConnectSDK-Swift"
@@ -25,8 +24,7 @@ Pod::Spec.new do |s|
     "OTHER_LDFLAGS"  => "$(inherited) -ObjC"
   }
 
-  # Source files (based on your repo)
-  # Core source files
+  # Source files
   s.source_files = "core/**/*.{h,m}",
                    "modules/**/*.{h,m}",
                    "ConnectSDKDefaultPlatforms.h",
@@ -35,17 +33,16 @@ Pod::Spec.new do |s|
   # Private headers
   s.private_header_files = "**/*_Private.h"
 
-  # Module map for Swift import
+  # Module map
   s.module_map = "modules/module.modulemap"
 
   # System libraries/frameworks
-  s.libraries  = "z", "icucore"
+  s.libraries = "z", "icucore"
   s.frameworks = "SystemConfiguration", "CoreBluetooth"
 
-  # Prefix header definitions
+  # Prefix header macros
   s.prefix_header_contents = <<-PREFIX
     #define CONNECT_SDK_VERSION @"#{s.version}"
-
     #define CONNECT_SDK_ENABLE_LOG
 
     #ifndef kConnectSDKWirelessSSIDChanged
@@ -72,7 +69,7 @@ Pod::Spec.new do |s|
   s.subspec 'GoogleCast' do |sp|
     cast_dir = "modules/google-cast"
 
-    sp.dependency 'ConnectSDK-Swift-Core', '1.0.1'
+    sp.dependency 'ConnectSDK-Swift/Core'
     sp.source_files = "#{cast_dir}/**/*.{h,m}"
     sp.exclude_files = "#{cast_dir}/*Tests/**/*"
     sp.private_header_files = "#{cast_dir}/**/*_Private.h"
@@ -85,4 +82,3 @@ Pod::Spec.new do |s|
     }
   end
 end
-
