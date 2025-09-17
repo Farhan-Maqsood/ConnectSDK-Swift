@@ -25,11 +25,8 @@ Pod::Spec.new do |s|
     "OTHER_LDFLAGS"  => "$(inherited) -ObjC"
   }
 
-<<<<<<< HEAD
   # Source files (based on your repo)
-=======
   # Core source files
->>>>>>> 0f9e940 (Final podspec for ConnectSDK-Swift v1.0.1)
   s.source_files = "core/**/*.{h,m}",
                    "modules/**/*.{h,m}",
                    "ConnectSDKDefaultPlatforms.h",
