@@ -35,14 +35,6 @@ Pod::Spec.new do |s|
   # Private headers
   s.private_header_files = "**/*_Private.h"
 
-<<<<<<< HEAD
-  # Module map for Swift
-  s.module_map = "modules/module.modulemap" # make sure modulemap exists here
-
-  # System libraries/frameworks
-  s.libraries = "z", "icucore"
-  s.frameworks = "SystemConfiguration", "CoreBluetooth"
-=======
   # Module map for Swift import
   s.module_map = "modules/module.modulemap"
 
@@ -92,6 +84,5 @@ Pod::Spec.new do |s|
       "FRAMEWORK_SEARCH_PATHS" => "$(PODS_ROOT)/google-cast-sdk/GoogleCastSDK-#{cast_version}-Release",
     }
   end
->>>>>>> 0f9e940 (Final podspec for ConnectSDK-Swift v1.0.1)
 end
 
