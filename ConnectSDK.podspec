@@ -20,20 +20,17 @@ Pod::Spec.new do |s|
   ConnectSDK combined with a modern Swift-first integration.
   DESC
 
-  s.homepage     = "https://github.com/appleApps-art/Connect-SDK-iOS"
+  s.homepage     = "https://github.com/Farhan-Maqsood/ConnectSDK-Swift"
   s.license      = { :type => "Apache License, Version 2.0", :file => "LICENSE" }
-  s.author       = { "appleApps-art" => "support@appleapps.art" }
+  s.author       = { "Farhan Maqsood" => "youremail@example.com" }
   s.social_media_url = "https://twitter.com/appleAppsArt"
 
   s.platform     = :ios, "11.0"
   s.ios.deployment_target = "11.0"
 
-  # 🔹 Your forked repo
-  s.source       = { :git => "https://github.com/appleApps-art/Connect-SDK-iOS.git",
-                     :tag => s.version,
-                     :submodules => true }
+  s.source       = { :git => "https://github.com/Farhan-Maqsood/ConnectSDK-Swift.git",
+                     :tag => s.version }
 
-  # 🔹 Modern Swift support
   s.module_name  = "ConnectSDK"
   s.pod_target_xcconfig = {
     "DEFINES_MODULE" => "YES",
@@ -63,27 +60,11 @@ Pod::Spec.new do |s|
     #endif
   PREFIX
 
-  non_arc_files =
-    "core/Frameworks/asi-http-request/External/Reachability/*.{h,m}",
-    "core/Frameworks/asi-http-request/Classes/*.{h,m}"
-
   s.subspec 'Core' do |sp|
-    sp.source_files  = "ConnectSDKDefaultPlatforms.h", "core/**/*.{h,m}"
-    sp.exclude_files = (non_arc_files.dup << "core/ConnectSDK*Tests/**/*" << "core/Frameworks/LGCast/**/*.h")
-    sp.private_header_files = "core/**/*_Private.h"
-    sp.requires_arc = true
-
-    sp.dependency 'ConnectSDK-Swift/no-arc'
-    sp.ios.vendored_frameworks = 'core/Frameworks/LGCast/LGCast.xcframework', 'core/Frameworks/LGCast/GStreamerForLGCast.xcframework'
-    sp.preserve_paths =  'core/Frameworks/LGCast/LGCast.xcframework', 'core/Frameworks/LGCast/GStreamerForLGCast.xcframework'
+    sp.dependency 'ConnectSDK-Swift-Core'
   end
 
-  s.subspec 'no-arc' do |sp|
-    sp.source_files = non_arc_files
-    sp.requires_arc = false
-    sp.compiler_flags = '-w'
-  end
-
+  # 🔹 Google Cast support
   s.subspec 'GoogleCast' do |sp|
     cast_dir = "modules/google-cast"
 
