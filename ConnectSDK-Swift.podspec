@@ -1,4 +1,4 @@
-Pod::Spec.new do |s|  
+kPod::Spec.new do |s|  
   s.name             = 'ConnectSDK-Swift'
   s.version          = '1.0.1'
   s.summary          = 'Connect SDK Swift version with all TV modules included'
@@ -16,7 +16,6 @@ such as FireTV, Google Cast, LGCast, and more. All modules are included by defau
   s.swift_version    = '5.0'
   s.module_name      = 'ConnectSDK'
 
-  # Include all sources except LGCast/GStreamer frameworks
   s.source_files = [
     'ConnectSDK-Swift/**/*.{h,m,swift}',
     '!ConnectSDK-Swift/Frameworks/LGCast/**/*'
@@ -25,19 +24,15 @@ such as FireTV, Google Cast, LGCast, and more. All modules are included by defau
     'ConnectSDK-Swift/**/*.h',
     '!ConnectSDK-Swift/Frameworks/LGCast/**/*'
   ]
-
-  # Vendored frameworks only (LGCast + GStreamer)
   s.vendored_frameworks = [
     'ConnectSDK-Swift/Frameworks/LGCast/LGCast.xcframework',
     'ConnectSDK-Swift/Frameworks/LGCast/GStreamerForLGCast.xcframework'
   ]
 
-  # Core + FireTV + GoogleCast dependencies included directly
   s.dependency 'ConnectSDK-Swift-Core', '~> 1.0.2'
   s.dependency 'ConnectSDK-Swift-FireTV', '~> 1.0.0'
   s.dependency 'ConnectSDK-Swift-GoogleCast', '~> 1.0.0'
 
-  # Pod configs
   s.requires_arc = true
   s.frameworks = ['SystemConfiguration', 'CoreBluetooth']
   s.libraries  = ['z', 'icucore']
