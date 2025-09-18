@@ -16,7 +16,7 @@ such as FireTV, Google Cast, LGCast, and more. All modules are included by defau
   s.swift_version    = '5.0'
   s.module_name      = 'ConnectSDK'
 
-  # Include all sources **except LGCast/GStreamer frameworks**
+  # Include all sources except LGCast/GStreamer frameworks
   s.source_files = [
     'ConnectSDK-Swift/**/*.{h,m,swift}',
     '!ConnectSDK-Swift/Frameworks/LGCast/**/*'
@@ -32,31 +32,10 @@ such as FireTV, Google Cast, LGCast, and more. All modules are included by defau
     'ConnectSDK-Swift/Frameworks/LGCast/GStreamerForLGCast.xcframework'
   ]
 
-  # Core dependency
+  # Core + FireTV + GoogleCast dependencies included directly
   s.dependency 'ConnectSDK-Swift-Core', '~> 1.0.2'
-
-  # FireTV subspec (compiled from sources)
-  s.subspec 'FireTV' do |sp|
-    sp.dependency 'ConnectSDK-Swift-Core'
-    sp.source       = { :git => 'https://github.com/Farhan-Maqsood/Connect-SDK-Swift-FireTV.git', :tag => '1.0.0' }
-    sp.source_files = 'Connect-SDK-Swift-FireTV/**/*.{h,m,swift}'
-  end
-
-  # GoogleCast subspec (compiled from sources)
-  s.subspec 'GoogleCast' do |sp|
-    sp.dependency 'ConnectSDK-Swift-Core'
-    sp.source       = { :git => 'https://github.com/Farhan-Maqsood/Connect-SDK-Swift-Google-Cast.git', :tag => '1.0.0' }
-    sp.source_files = 'Connect-SDK-Swift-Google-Cast/**/*.{h,m,swift}'
-  end
-
-  # Complete subspec for single import
-  s.subspec 'Complete' do |sp|
-    sp.dependency 'ConnectSDK-Swift-Core'
-    sp.dependency 'ConnectSDK-Swift/FireTV'
-    sp.dependency 'ConnectSDK-Swift/GoogleCast'
-    # LGCast is already vendored in Core, no sources compiled -> no duplicate headers
-  end
-  s.default_subspec = 'Complete'
+  s.dependency 'ConnectSDK-Swift-FireTV', '~> 1.0.0'
+  s.dependency 'ConnectSDK-Swift-GoogleCast', '~> 1.0.0'
 
   # Pod configs
   s.requires_arc = true
