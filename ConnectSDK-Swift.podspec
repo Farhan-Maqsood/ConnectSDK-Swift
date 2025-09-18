@@ -1,6 +1,6 @@
-kPod::Spec.new do |s|  
+Pod::Spec.new do |s|  
   s.name             = 'ConnectSDK-Swift'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'Connect SDK Swift version with all TV modules included'
   s.description      = <<-DESC
 ConnectSDK-Swift enables discovery and connection to multiple devices 
@@ -29,6 +29,7 @@ such as FireTV, Google Cast, LGCast, and more. All modules are included by defau
     'ConnectSDK-Swift/Frameworks/LGCast/GStreamerForLGCast.xcframework'
   ]
 
+  # Dependencies: must point to proper podspec repos
   s.dependency 'ConnectSDK-Swift-Core', '~> 1.0.2'
   s.dependency 'ConnectSDK-Swift-FireTV', '~> 1.0.0'
   s.dependency 'ConnectSDK-Swift-GoogleCast', '~> 1.0.0'
