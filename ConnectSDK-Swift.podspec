@@ -12,7 +12,7 @@ such as FireTV, Google Cast, LGCast, and more. All modules are included by defau
   s.author           = { 'Farhan Maqsood' => 'farhanmaqsood44@gmail.com' }
   s.source           = { :git => 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '12.0'
+  s.ios.deployment_target = '14.0'
   s.swift_version    = '5.0'
   s.module_name      = 'ConnectSDK'
 
