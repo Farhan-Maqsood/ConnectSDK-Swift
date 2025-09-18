@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|  
   s.name             = 'ConnectSDK-Swift'
   s.version          = '1.0.1'
-  s.summary          = 'Connect SDK Swift version with all TV modules included'
+  s.summary          = 'Connect SDK Swift version with Core and Google Cast modules'
   s.description      = <<-DESC
   ConnectSDK-Swift enables discovery and connection to multiple devices 
-  including FireTV, Google Cast, LG TVs, and more. Complete Swift version.
+  including Google Cast, LG TVs, and more. Complete Swift version.
   DESC
 
   s.homepage         = 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift'
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.module_name   = 'ConnectSDK'
   s.static_framework = true
 
-  # Dependencies - everything in one go!
+  # Dependencies
   s.dependency 'ConnectSDK-Swift-Core', '~> 1.0.2'
   s.dependency 'ConnectSDK-Swift-GoogleCast', '~> 1.0.0'
   s.dependency 'google-cast-sdk', '~> 4.8'
@@ -32,3 +32,4 @@ Pod::Spec.new do |s|
     "DEFINES_MODULE" => "YES"
   }
 end
+
