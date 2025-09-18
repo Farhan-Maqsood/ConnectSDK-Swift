@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ConnectSDK-Swift'
-  s.version          = '1.0.2'  # Incremented version to push new changes
+  s.version          = '1.0.2'  # incremented version for new changes
   s.summary          = 'Connect SDK Swift version with Core, Google Cast, and FireTV modules'
   s.description      = "Complete Swift SDK enabling discovery and connection to multiple devices."
   s.homepage         = 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift'
@@ -13,22 +13,27 @@ Pod::Spec.new do |s|
   s.static_framework = true
   s.requires_arc = true
 
-  # Include all source files, explicitly add missing header
+  # Include all source files and supporting folder
   s.source_files = [
-    "ConnectSDKDefaultPlatforms.h",   # Explicitly include missing file
-    "**/*.{h,m,swift}"
+    "ConnectSDKDefaultPlatforms.h",       # explicitly include missing header
+    "core/**/*.{h,m,swift}",             # include all files from core
+    "modules/**/*.{h,m,swift}",          # include all module files (FireTV, Google Cast)
+    "Supporting Files/**/*",              # include any supporting files (binaries, configs)
+    "**/*.{h,m,swift}"                    # catch-all in case other files exist
   ]
 
   # Public headers
   s.public_header_files = [
     "ConnectSDKDefaultPlatforms.h",
-    "**/*.h"
+    "core/**/*.h",
+    "modules/**/*.h",
+    "Supporting Files/**/*"
   ]
 
-  # Dependencies with specific tags
-  s.dependency 'ConnectSDK-Swift-Core', :git => 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift-Core.git', :tag => '1.0.3'
-  s.dependency 'ConnectSDK-Swift-FireTV', :git => 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift-FireTV.git', :tag => '1.0.0'
-  s.dependency 'ConnectSDK-Swift-GoogleCast', :git => 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift-GoogleCast.git', :tag => '1.0.0'
+  # Dependencies (version constraints only, do NOT use :git or :tag here)
+  s.dependency 'ConnectSDK-Swift-Core', '~> 1.0.3'
+  s.dependency 'ConnectSDK-Swift-FireTV', '~> 1.0.0'
+  s.dependency 'ConnectSDK-Swift-GoogleCast', '~> 1.0.0'
 
   # Frameworks and libraries
   s.frameworks = ['SystemConfiguration','CoreBluetooth','Network']
