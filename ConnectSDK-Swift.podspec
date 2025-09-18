@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.static_framework = true
   s.requires_arc = true
 
-s.dependency 'ConnectSDK-Swift-Core', :git => 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift-Core.git', :tag => '1.0.2'
+s.dependency 'ConnectSDK-Swift-Core', :git => 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift-Core.git', :tag => '1.0.3'
 s.dependency 'ConnectSDK-Swift-FireTV', :git => 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift-FireTV.git', :tag => '1.0.0'
 s.dependency 'ConnectSDK-Swift-GoogleCast', :git => 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift-GoogleCast.git', :tag => '1.0.0'
 
