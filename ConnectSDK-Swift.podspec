@@ -1,11 +1,8 @@
-Pod::Spec.new do |s|  
+kPod::Spec.new do |s|  
   s.name             = 'ConnectSDK-Swift'
   s.version          = '1.0.1'
   s.summary          = 'Connect SDK Swift version with all TV modules included'
-  s.description      = <<-DESC
-ConnectSDK-Swift enables discovery and connection to multiple devices 
-such as FireTV, Google Cast, LGCast, and more. All modules are included by default.
-  DESC
+  s.description      = 'ConnectSDK-Swift enables discovery and connection to multiple devices like FireTV, Google Cast, LGCast, and more.'
 
   s.homepage         = 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift'
   s.license          = { :type => 'Apache-2.0', :file => 'LICENSE' }
@@ -14,8 +11,9 @@ such as FireTV, Google Cast, LGCast, and more. All modules are included by defau
 
   # Deployment & Swift
   s.ios.deployment_target = '14.0'
-  s.swift_version    = '5.0'
-  s.module_name      = 'ConnectSDK'
+  s.swift_version = '5.0'
+  s.module_name   = 'ConnectSDK'
+  s.static_framework = true
 
   # Source files
   s.source_files = [
@@ -57,18 +55,17 @@ such as FireTV, Google Cast, LGCast, and more. All modules are included by defau
     sp.dependency 'ConnectSDK-Swift-Core'
     sp.dependency 'ConnectSDK-Swift/FireTV'
     sp.dependency 'ConnectSDK-Swift/GoogleCast'
-    # LGCast already vendored
   end
 
-  # Pod configs for Obj-C & Swift compatibility
+  # Pod configs
   s.requires_arc = true
   s.frameworks = ['SystemConfiguration', 'CoreBluetooth']
   s.libraries  = ['z', 'icucore']
   s.xcconfig = { 
     "OTHER_LDFLAGS" => "$(inherited) -ObjC",
     "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES" => "YES",
-    "DEFINES_MODULE" => "YES"
+    "DEFINES_MODULE" => "YES",
+    "BUILD_LIBRARY_FOR_DISTRIBUTION" => "YES"
   }
-
 end
 
