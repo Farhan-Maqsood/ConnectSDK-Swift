@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|  
   s.name             = 'ConnectSDK-Swift'
-  s.version          = '1.0.2'
+  s.version          = '1.0.1'
   s.summary          = 'Connect SDK Swift version with all TV modules included'
   s.description      = <<-DESC
 ConnectSDK-Swift enables discovery and connection to multiple devices 
