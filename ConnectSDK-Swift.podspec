@@ -2,7 +2,10 @@ Pod::Spec.new do |s|
   s.name             = 'ConnectSDK-Swift'
   s.version          = '1.0.1'
   s.summary          = 'Connect SDK Swift version with all TV modules included'
-  s.description      = 'ConnectSDK-Swift enables discovery and connection to multiple devices like FireTV, Google Cast, LGCast, and more.'
+  s.description      = <<-DESC
+  ConnectSDK-Swift enables discovery and connection to multiple devices 
+  including FireTV, Google Cast, LG TVs, and more. Complete Swift version.
+  DESC
 
   s.homepage         = 'https://github.com/Farhan-Maqsood/ConnectSDK-Swift'
   s.license          = { :type => 'Apache-2.0', :file => 'LICENSE' }
@@ -14,37 +17,15 @@ Pod::Spec.new do |s|
   s.module_name   = 'ConnectSDK'
   s.static_framework = true
 
-  # Default subspec to include all
-  s.default_subspec = 'Complete'
-
-  # Core subspec
-  s.subspec 'Core' do |sp|
-    sp.dependency 'ConnectSDK-Swift-Core', '~> 1.0.2'
-  end
-
-  # FireTV module
-  s.subspec 'FireTV' do |sp|
-    sp.dependency 'ConnectSDK-Swift/Core'
-    sp.dependency 'ConnectSDK-Swift-FireTV', '~> 1.0.0'
-  end
-
-  # GoogleCast module
-  s.subspec 'GoogleCast' do |sp|
-    sp.dependency 'ConnectSDK-Swift/Core'
-    sp.dependency 'ConnectSDK-Swift-GoogleCast', '~> 1.0.0'
-    sp.dependency 'google-cast-sdk', '~> 4.8'
-  end
-
-  # Complete subspec with all modules
-  s.subspec 'Complete' do |sp|
-    sp.dependency 'ConnectSDK-Swift/Core'
-    sp.dependency 'ConnectSDK-Swift/FireTV'
-    sp.dependency 'ConnectSDK-Swift/GoogleCast'
-  end
+  # Dependencies - everything in one go!
+  s.dependency 'ConnectSDK-Swift-Core', '~> 1.0.2'
+  s.dependency 'ConnectSDK-Swift-FireTV', '~> 1.0.0'
+  s.dependency 'ConnectSDK-Swift-GoogleCast', '~> 1.0.0'
+  s.dependency 'google-cast-sdk', '~> 4.8'
 
   s.requires_arc = true
-  s.frameworks = ['SystemConfiguration', 'CoreBluetooth']
-  s.libraries  = ['z', 'icucore']
+  s.frameworks = ['SystemConfiguration', 'CoreBluetooth', 'Network']
+  s.libraries  = ['z', 'icucore', 'c++']
   
   s.xcconfig = { 
     "OTHER_LDFLAGS" => "$(inherited) -ObjC",
