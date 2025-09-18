@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   ]
 
   # Dependencies (version constraints only, do NOT use :git or :tag here)
-  s.dependency 'ConnectSDK-Swift-Core', '~> 1.0.5'
+  s.dependency 'ConnectSDK-Swift-Core', '~> 1.0.6'
   s.dependency 'ConnectSDK-Swift-GoogleCast', '~> 1.0.0'
 
   # Frameworks and libraries
