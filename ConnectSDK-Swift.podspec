@@ -50,13 +50,13 @@ such as FireTV, Google Cast, LGCast, and more. All modules are included by defau
   end
 
   # Complete subspec for single import
-  s.default_subspec = 'Complete'
   s.subspec 'Complete' do |sp|
     sp.dependency 'ConnectSDK-Swift-Core'
     sp.dependency 'ConnectSDK-Swift/FireTV'
     sp.dependency 'ConnectSDK-Swift/GoogleCast'
     # LGCast is already vendored in Core, no sources compiled -> no duplicate headers
   end
+  s.default_subspec = 'Complete'
 
   # Pod configs
   s.requires_arc = true
