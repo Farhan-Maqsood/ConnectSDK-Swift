@@ -19,7 +19,6 @@ Pod::Spec.new do |s|
 
   # Dependencies - everything in one go!
   s.dependency 'ConnectSDK-Swift-Core', '~> 1.0.2'
-  # s.dependency 'ConnectSDK-Swift-FireTV', '~> 1.0.0'
   s.dependency 'ConnectSDK-Swift-GoogleCast', '~> 1.0.0'
   s.dependency 'google-cast-sdk', '~> 4.8'
 
